@@ -1,0 +1,63 @@
+group 'com.example.fingerprint_intergration'
+version '1.0'
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.2.0'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 31
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 19
+        multiDexEnabled true
+    }
+}
+repositories {
+
+    flatDir {
+
+        dirs 'libs'
+
+    }
+
+}
+
+dependencies {
+
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:multidex:1.0.3'
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+
+    implementation 'com.google.android.material:material:1.3.0'
+
+
+
+
+
+    compileOnly fileTree(dir: 'libs', include: ['*.aar'])
+
+}
